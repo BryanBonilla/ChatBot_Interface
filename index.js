@@ -3,7 +3,7 @@ const microfono = document.querySelector("#microfono");
 const resultado = document.querySelector(".resultado");
 const formulario = document.querySelector("#formulario");
 const mensaje = document.querySelector(".mensaje");
-const API_KEY = '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';
+const API_KEY = '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';
 const MODEL_ENGINE = 'text-davinci-003';
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -82,6 +82,7 @@ generateText(prompt).then(output => {
 }
 
 function spinner(){
+  limpiarHTML();
   const spinner = document.createElement("DIV");
   spinner.classList.add("spinner");
   spinner.innerHTML = `
