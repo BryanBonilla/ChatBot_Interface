@@ -48,4 +48,19 @@
     }
   }
 
+  .mensaje-usuario {
+    text-align: right;
+    background-color: #f2f2f2;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .mensaje-bot {
+    text-align: left;
+    background-color: #e6f7ff;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
   

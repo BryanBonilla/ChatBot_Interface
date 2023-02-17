@@ -1,10 +1,12 @@
-
 const microfono = document.querySelector("#microfono");
 const resultado = document.querySelector(".resultado");
 const formulario = document.querySelector("#formulario");
 const mensaje = document.querySelector(".mensaje");
-const API_KEY = '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';
+const API_KEY = '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';
 const MODEL_ENGINE = 'text-davinci-003';
+
+// Array para almacenar la conversación
+let conversacion = [];
 
 document.addEventListener("DOMContentLoaded", ()=>{
   microfono.addEventListener("click", ejecutarSpeech);
@@ -42,13 +44,12 @@ function capturarTexto(e){
   const texto = mensaje.value;
   const prompt = texto;
   generateText(prompt).then(output => {
-    limpiarHTML();
-    const respuesta = document.createElement("p");
-    respuesta.innerHTML = `<b>User:</b> ${texto} <br><br><b>Respuesta: </b> ${output}`
-    resultado.appendChild(respuesta);
+    const mensajeUsuario = `<div class="mensaje mensaje-usuario"><b>User:</b> ${texto}</div>`;
+    const mensajeBot = `<div class="mensaje mensaje-bot"><b>Bot:</b> ${output}</div>`;
+    conversacion.push(mensajeUsuario, mensajeBot);
+    actualizarConversacion();
     mensaje.value = "";
-});
-  
+  });
 }
 
 function ejecutarSpeech(){
@@ -69,14 +70,13 @@ function ejecutarSpeech(){
       
         let transcript = e.results[0][0].transcript;
        
-// Usage
-const prompt = transcript;
-generateText(prompt).then(output => {
-    limpiarHTML();
-    const respuesta = document.createElement("p");
-    respuesta.innerHTML = `<b>User:</b> ${transcript} <br><br><b>Respuesta: </b> ${output}`
-    resultado.appendChild(respuesta);
-});
+        const prompt = transcript;
+        generateText(prompt).then(output => {
+            const mensajeUsuario = `<div class="mensaje mensaje-usuario"><b>User:</b> ${transcript}</div>`;
+            const mensajeBot = `<div class="mensaje mensaje-bot"><b>Bot:</b> ${output}</div>`;
+            conversacion.push(mensajeUsuario, mensajeBot);
+            actualizarConversacion();
+        });
     
     }
 }
@@ -92,8 +92,15 @@ function spinner(){
   resultado.appendChild(spinner);
 }
 
+function actualizarConversacion(){
+  limpiarHTML();
+conversacion.forEach((mensaje) => {
+resultado.innerHTML += mensaje;
+});
+}
+
 function limpiarHTML(){
-  if(resultado.firstChild){
-    resultado.removeChild(resultado.firstChild);
-  }
+while(resultado.firstChild){
+resultado.removeChild(resultado.firstChild);
+}
 }
