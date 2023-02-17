@@ -1,4 +1,4 @@
-const API_KEY = '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';
+const API_KEY = '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';
 const MODEL_ENGINE = 'text-davinci-003';
 
 async function generateText(prompt) {
