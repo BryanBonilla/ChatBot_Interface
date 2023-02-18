@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
   formulario.addEventListener("submit", spinner);
 })
 
+const container = document.querySelector('.scrollable');
+container.scrollTop = container.scrollHeight - container.clientHeight;
+
 async function generateText(prompt) {
   try {
     const response = await fetch(`https://api.openai.com/v1/engines/${MODEL_ENGINE}/completions`, {
@@ -76,6 +79,7 @@ function ejecutarSpeech(){
             const mensajeBot = `<div class="mensaje mensaje-bot"><b>Bot:</b> ${output}</div>`;
             conversacion.push(mensajeUsuario, mensajeBot);
             actualizarConversacion();
+            
         });
     
     }
@@ -97,6 +101,8 @@ function actualizarConversacion(){
 conversacion.forEach((mensaje) => {
 resultado.innerHTML += mensaje;
 });
+container.scrollTop = container.scrollHeight - container.clientHeight;
+
 }
 
 function limpiarHTML(){

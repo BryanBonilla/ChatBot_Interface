@@ -64,3 +64,6 @@
     border-radius: 10px;
   }
   
+  .resultado::-webkit-scrollbar {
+    display: none;
+  }
