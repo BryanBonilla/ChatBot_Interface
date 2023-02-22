@@ -2,7 +2,7 @@ const microfono = document.querySelector("#microfono");
 const resultado = document.querySelector(".resultado");
 const formulario = document.querySelector("#formulario");
 const mensaje = document.querySelector(".mensaje");
-const API_KEY = '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';
+const API_KEY = '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';
 const MODEL_ENGINE = 'text-davinci-003';
 
 // Array para almacenar la conversación
@@ -47,8 +47,8 @@ function capturarTexto(e){
   const texto = mensaje.value;
   const prompt = texto;
   generateText(prompt).then(output => {
-    const mensajeUsuario = `<div class="mensaje mensaje-usuario"><b>User:</b> ${texto}</div>`;
-    const mensajeBot = `<div class="mensaje mensaje-bot"><b>Bot:</b> ${output}</div>`;
+    const mensajeUsuario = `<div class="mensaje mensaje-usuario"><b>Usuario:</b> ${texto}</div>`;
+    const mensajeBot = `<div class="mensaje mensaje-bot"><b>NOVA:</b> ${output}</div>`;
     conversacion.push(mensajeUsuario, mensajeBot);
     actualizarConversacion();
     mensaje.value = "";
@@ -75,8 +75,8 @@ function ejecutarSpeech(){
        
         const prompt = transcript;
         generateText(prompt).then(output => {
-            const mensajeUsuario = `<div class="mensaje mensaje-usuario"><b>User:</b> ${transcript}</div>`;
-            const mensajeBot = `<div class="mensaje mensaje-bot"><b>Bot:</b> ${output}</div>`;
+            const mensajeUsuario = `<div class="mensaje mensaje-usuario"><b>Usuario:</b> ${transcript}</div>`;
+            const mensajeBot = `<div class="mensaje mensaje-bot"><b>NOVA:</b> ${output}</div>`;
             conversacion.push(mensajeUsuario, mensajeBot);
             actualizarConversacion();
             
