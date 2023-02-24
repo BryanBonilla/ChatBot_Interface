@@ -244,6 +244,16 @@
     border-radius: 50px;
     transition: transform 0.3s ease;
 }
+
+.btn{
+  background-color: #0195ac;
+  transition: all 1s;
+}
+
+.btn:hover{
+  background: #067586; 
+}
+
 @media screen and (max-width: 480px) {
   #button{
     font-size: 12px;
@@ -272,3 +282,8 @@
 .button:hover::before{
     transform: translate(12px, 12px);
 } */
+
+.fw-bold{
+  font-weight: bold;
+  text-transform: uppercase;
+}

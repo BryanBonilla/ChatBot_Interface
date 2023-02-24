@@ -2,7 +2,7 @@ const microfono = document.querySelector("#microfono");
 const resultado = document.querySelector(".resultado");
 const formulario = document.querySelector("#formulario");
 const mensaje = document.querySelector(".mensaje");
-const API_KEY = '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';
+const API_KEY = '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';
 const MODEL_ENGINE = 'text-davinci-003';
 
 // Array para almacenar la conversación
